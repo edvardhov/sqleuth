@@ -1,0 +1,380 @@
+@import "tailwindcss";
+
+:root {
+  --terminal-bg: #060a08;
+  --terminal-green: #33ff66;
+  --terminal-green-dim: #1a6633;
+  --terminal-cyan: #00ffc8;
+  --terminal-cyan-dim: #007a62;
+  --neon-red: #ff4466;
+  --neon-red-dim: #992233;
+  --surface: rgba(8, 14, 10, 0.88);
+  --surface-raised: rgba(12, 20, 14, 0.95);
+  --border-glow: rgba(51, 255, 102, 0.2);
+  --border-glow-strong: rgba(51, 255, 102, 0.45);
+  --border-cyan: rgba(0, 255, 200, 0.25);
+  --text-primary: rgba(180, 255, 200, 0.92);
+  --text-muted: rgba(100, 180, 120, 0.55);
+  --text-dim: rgba(60, 120, 80, 0.45);
+}
+
+@theme inline {
+  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-geist-sans);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+body {
+  background: var(--terminal-bg);
+  color: var(--text-primary);
+  font-family: var(--font-mono), monospace;
+}
+
+/* ── CRT Terminal ── */
+.crt-screen {
+  background: var(--terminal-bg);
+  position: relative;
+  overflow: hidden;
+}
+
+.crt-screen::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.18) 0px,
+    rgba(0, 0, 0, 0.18) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  pointer-events: none;
+  z-index: 10;
+}
+
+.crt-screen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 55%, rgba(0, 0, 0, 0.65) 100%);
+  pointer-events: none;
+  z-index: 11;
+}
+
+.terminal-glow {
+  text-shadow:
+    0 0 5px var(--terminal-green),
+    0 0 12px rgba(51, 255, 102, 0.35);
+}
+
+.terminal-glow-subtle {
+  text-shadow: 0 0 10px rgba(51, 255, 102, 0.4);
+}
+
+.terminal-glow-cyan {
+  text-shadow:
+    0 0 5px var(--terminal-cyan),
+    0 0 12px rgba(0, 255, 200, 0.35);
+}
+
+/* ── Neon card system (shared across board + modals) ── */
+.neon-card {
+  background: var(--surface-raised);
+  border: 1px solid var(--border-glow);
+  box-shadow:
+    0 0 20px rgba(51, 255, 102, 0.06),
+    0 8px 32px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(51, 255, 102, 0.08);
+  border-radius: 4px;
+  color: var(--text-primary);
+}
+
+.neon-card::before {
+  content: "";
+  display: block;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--terminal-green), transparent);
+  opacity: 0.5;
+  margin: -1px -1px 0;
+  border-radius: 4px 4px 0 0;
+}
+
+.neon-card-cyan::before {
+  background: linear-gradient(90deg, transparent, var(--terminal-cyan), transparent);
+}
+
+.neon-card-red::before {
+  background: linear-gradient(90deg, transparent, var(--neon-red), transparent);
+}
+
+.neon-card-body {
+  padding: 1rem 1.25rem;
+}
+
+.neon-card-body-flush::before {
+  display: none;
+}
+
+/* Inner data rows */
+.neon-row {
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(51, 255, 102, 0.1);
+  border-radius: 3px;
+  padding: 0.5rem 0.625rem;
+}
+
+.neon-row-label {
+  font-size: 0.5625rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.neon-row-value {
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: var(--text-primary);
+  margin-top: 0.125rem;
+}
+
+/* Suspect tile */
+.neon-tile {
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(51, 255, 102, 0.15);
+  border-radius: 3px;
+  overflow: hidden;
+  transition: border-color 0.15s;
+}
+
+.neon-tile:hover {
+  border-color: rgba(51, 255, 102, 0.35);
+}
+
+/* Badges */
+.neon-badge {
+  display: inline-block;
+  padding: 0.125rem 0.5rem;
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  border: 1px solid;
+}
+
+.neon-badge-green {
+  color: var(--terminal-green);
+  border-color: rgba(51, 255, 102, 0.35);
+  background: rgba(51, 255, 102, 0.08);
+}
+
+.neon-badge-cyan {
+  color: var(--terminal-cyan);
+  border-color: rgba(0, 255, 200, 0.35);
+  background: rgba(0, 255, 200, 0.06);
+}
+
+.neon-badge-red {
+  color: var(--neon-red);
+  border-color: rgba(255, 68, 102, 0.35);
+  background: rgba(255, 68, 102, 0.08);
+}
+
+/* Buttons */
+.neon-btn {
+  font-family: inherit;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.625rem 1rem;
+  border-radius: 3px;
+  border: 1px solid;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.neon-btn-green {
+  color: var(--terminal-green);
+  border-color: rgba(51, 255, 102, 0.4);
+  background: rgba(51, 255, 102, 0.08);
+}
+
+.neon-btn-green:hover:not(:disabled) {
+  background: rgba(51, 255, 102, 0.15);
+  border-color: rgba(51, 255, 102, 0.6);
+  box-shadow: 0 0 12px rgba(51, 255, 102, 0.2);
+}
+
+.neon-btn-cyan {
+  color: var(--terminal-cyan);
+  border-color: rgba(0, 255, 200, 0.4);
+  background: rgba(0, 255, 200, 0.06);
+}
+
+.neon-btn-cyan:hover:not(:disabled) {
+  background: rgba(0, 255, 200, 0.12);
+  border-color: rgba(0, 255, 200, 0.55);
+  box-shadow: 0 0 12px rgba(0, 255, 200, 0.15);
+}
+
+.neon-btn-red {
+  color: var(--neon-red);
+  border-color: rgba(255, 68, 102, 0.4);
+  background: rgba(255, 68, 102, 0.08);
+}
+
+.neon-btn-red:hover:not(:disabled) {
+  background: rgba(255, 68, 102, 0.15);
+  border-color: rgba(255, 68, 102, 0.6);
+  box-shadow: 0 0 12px rgba(255, 68, 102, 0.2);
+}
+
+.neon-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.neon-btn-ghost {
+  color: var(--text-muted);
+  border-color: rgba(51, 255, 102, 0.2);
+  background: transparent;
+}
+
+.neon-btn-ghost:hover {
+  color: var(--text-primary);
+  border-color: rgba(51, 255, 102, 0.35);
+}
+
+/* Evidence board */
+.evidence-board {
+  background-color: var(--terminal-bg);
+  background-image:
+    radial-gradient(ellipse at 20% 10%, rgba(51, 255, 102, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 90%, rgba(0, 255, 200, 0.03) 0%, transparent 50%),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 39px,
+      rgba(51, 255, 102, 0.025) 39px,
+      rgba(51, 255, 102, 0.025) 40px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 39px,
+      rgba(51, 255, 102, 0.025) 39px,
+      rgba(51, 255, 102, 0.025) 40px
+    );
+}
+
+.panel-divider {
+  box-shadow: inset -1px 0 0 var(--border-glow);
+}
+
+/* Terminal input */
+.terminal-textarea {
+  text-shadow: none;
+}
+
+.terminal-input-area {
+  background: rgba(0, 0, 0, 0.4);
+  position: relative;
+  z-index: 20;
+}
+
+/* Modal backdrop */
+.neon-backdrop {
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(4px);
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(51, 255, 102, 0.2);
+  border-radius: 2px;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.cursor-blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* Hint billboard ticker */
+.hint-billboard {
+  align-items: center;
+  max-width: 32rem;
+}
+
+.hint-billboard-viewport {
+  overflow: hidden;
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    black 6%,
+    black 94%,
+    transparent 100%
+  );
+}
+
+.hint-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: hint-scroll 48s linear infinite;
+}
+
+.hint-marquee-track:hover {
+  animation-play-state: paused;
+}
+
+.hint-marquee-group {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 2.5rem;
+  padding-right: 2.5rem;
+}
+
+.hint-marquee-item {
+  white-space: nowrap;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.6875rem;
+  font-style: italic;
+  color: rgba(100, 180, 120, 0.65);
+}
+
+@keyframes hint-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
