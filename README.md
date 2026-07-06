@@ -23,11 +23,7 @@ Solve *The Marlowe File* — a murder mystery at The Blue Dahlia nightclub — b
 
 ## Demo
 
-A static demo runs on GitHub Pages with mock data — no backend required:
-
-**[Play the Demo](https://edvardhov.github.io/sqleuth/)** *(after deploying)*
-
-Set `NEXT_PUBLIC_USE_MOCK_DATA=true` to bypass the FastAPI backend entirely.
+**[Play the Demo](https://edvardhov.github.io/sqleuth/)** — runs on GitHub Pages, no backend required.
 
 ## Architecture
 
