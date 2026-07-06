@@ -19,7 +19,7 @@ export default function GameHeader() {
     <header className="flex shrink-0 items-center justify-between border-b border-green-900/25 bg-[#080c08] px-4 py-2">
       <div className="flex items-center gap-3">
         <Image
-          src="/logo.png"
+          src="/logo-mark.png"
           alt="SQLeuth"
           width={36}
           height={36}
