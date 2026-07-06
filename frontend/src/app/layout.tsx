@@ -12,19 +12,23 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl.endsWith("/") ? siteUrl : `${siteUrl}/`),
   title: "SQLeuth — Noir SQL Detective Game",
   description:
     "A gamified, local-first SQL learning platform styled as a 1940s noir detective game. Solve a murder mystery by querying suspects, alibis, and evidence.",
   icons: {
-    icon: "/logo.png",
-    apple: "/logo.png",
+    icon: `${basePath}/logo.png`,
+    apple: `${basePath}/logo.png`,
   },
   openGraph: {
     title: "SQLeuth — Noir SQL Detective Game",
     description:
       "Learn SQL by solving a 1940s noir murder mystery. Query suspects, alibis, and evidence.",
-    images: ["/logo.png"],
+    images: [`${basePath}/logo.png`],
   },
 };
 
