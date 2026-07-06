@@ -13,7 +13,7 @@ Solve *The Marlowe File* — a murder mystery at The Blue Dahlia nightclub — b
 
 A static demo runs on GitHub Pages with mock data — no backend required:
 
-**[Play the Demo](https://edvardhovhannisyan.github.io/sqleuth/)** *(after deploying)*
+**[Play the Demo](https://edvardhov.github.io/sqleuth/)** *(after deploying)*
 
 Set `NEXT_PUBLIC_USE_MOCK_DATA=true` to bypass the FastAPI backend entirely.
 
@@ -51,7 +51,7 @@ Set `NEXT_PUBLIC_USE_MOCK_DATA=true` to bypass the FastAPI backend entirely.
 ### 1. Clone and configure
 
 ```bash
-git clone https://github.com/edvardhovhannisyan/sqleuth.git
+git clone https://github.com/edvardhov/sqleuth.git
 cd sqleuth
 cp .env.example .env
 ```
