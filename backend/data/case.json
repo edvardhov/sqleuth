@@ -1,0 +1,20 @@
+{
+  "title": "The Marlowe File",
+  "subtitle": "Case #47-118",
+  "briefing": "January 14th, 1947. Violet Marlowe — headliner at The Blue Dahlia — was found dead in her dressing room at 11:47 PM. The door was locked from the inside. Someone in this city knows how she died.\n\nYou've got a badge, a badge attitude, and a SQLite database full of liars. Run SELECT queries. Follow the threads. When you're sure, make your accusation.",
+  "victim": "Violet Marlowe",
+  "location": "The Blue Dahlia Nightclub, Los Angeles",
+  "date": "1947-01-14",
+  "killer_id": 3,
+  "killer_name": "Frank Malone",
+  "hints": [
+    "Start with the crime scene. What does the report say about the time of death?",
+    "Every suspect has an alibi. Read the interviews — liars contradict themselves.",
+    "Phone records don't lie. Who was on the line when Violet took her last breath?",
+    "Cross-reference hotel check-ins with alibis. Someone wasn't where they said they were.",
+    "Join suspects to evidence. The murder weapon tells a story.",
+    "When the threads converge on one name, you've got your killer."
+  ],
+  "win_epilogue": "Frank Malone folds like cheap suit lining. The DA has phone records, a monogrammed cufflink from the crime scene, and a witness who saw him leave the service entrance at 11:45. Violet Marlowe gets justice. The city sleeps a little easier — but never clean.",
+  "lose_epilogue": "Wrong badge, wrong guy. Malone walks. Violet Marlowe becomes another unsolved file in a drawer that never closes. The rain keeps falling on Los Angeles."
+}
