@@ -1,6 +1,18 @@
-# SQLeuth
+<p align="center">
+  <img src="assets/logo.png" alt="SQLeuth logo" width="160" />
+</p>
 
-**A gamified, local-first SQL learning platform styled as a gritty 1940s noir detective game.**
+<h1 align="center">SQLeuth</h1>
+
+<p align="center">
+  <strong>A gamified, local-first SQL learning platform styled as a gritty 1940s noir detective game.</strong>
+</p>
+
+<p align="center">
+  <a href="https://edvardhov.github.io/sqleuth/"><strong>Play the Demo →</strong></a>
+</p>
+
+<br />
 
 Solve *The Marlowe File* — a murder mystery at The Blue Dahlia nightclub — by writing SQL queries against a SQLite database of suspects, alibis, phone records, and evidence. An AI narrator (powered by local Ollama) delivers hard-boiled commentary on your findings.
 

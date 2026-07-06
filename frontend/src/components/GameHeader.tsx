@@ -1,7 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaMagnifyingGlass, FaBook, FaGavel, FaTable } from "react-icons/fa6";
+import { FaBook, FaGavel, FaTable } from "react-icons/fa6";
 
 import { isMockMode } from "@/lib/api";
 import HintBillboard from "@/components/HintBillboard";
@@ -17,7 +18,14 @@ export default function GameHeader() {
   return (
     <header className="flex shrink-0 items-center justify-between border-b border-green-900/25 bg-[#080c08] px-4 py-2">
       <div className="flex items-center gap-3">
-        <FaMagnifyingGlass className="text-green-500/80" />
+        <Image
+          src="/logo.png"
+          alt="SQLeuth"
+          width={36}
+          height={36}
+          className="rounded-sm"
+          priority
+        />
         <div>
           <h1 className="font-mono text-base font-bold tracking-widest text-green-400/90 terminal-glow-subtle">
             SQLeuth

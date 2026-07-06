@@ -16,6 +16,16 @@ export const metadata: Metadata = {
   title: "SQLeuth — Noir SQL Detective Game",
   description:
     "A gamified, local-first SQL learning platform styled as a 1940s noir detective game. Solve a murder mystery by querying suspects, alibis, and evidence.",
+  icons: {
+    icon: "/logo.png",
+    apple: "/logo.png",
+  },
+  openGraph: {
+    title: "SQLeuth — Noir SQL Detective Game",
+    description:
+      "Learn SQL by solving a 1940s noir murder mystery. Query suspects, alibis, and evidence.",
+    images: ["/logo.png"],
+  },
 };
 
 export default function RootLayout({
