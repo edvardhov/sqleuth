@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/logo.png" alt="SQLeuth logo" width="300" />
+  <img src="frontend/public/logo.png" alt="SQLeuth logo" width="300" />
 </p>
 
 <p align="center">

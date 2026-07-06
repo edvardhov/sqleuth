@@ -3,6 +3,8 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { FaXmark } from "react-icons/fa6";
 
+import { isMockMode } from "@/lib/api";
+import { getModeGuide } from "@/lib/modeGuide";
 import { TABLE_GUIDE } from "@/lib/schemaGuide";
 import type { CaseData, SchemaTable } from "@/lib/types";
 
@@ -14,6 +16,8 @@ interface CaseBriefingProps {
 }
 
 export default function CaseBriefing({ caseData, schema, onClose, onOpenNotes }: CaseBriefingProps) {
+  const modeGuide = getModeGuide(isMockMode());
+
   return (
     <AnimatePresence>
       <motion.div
@@ -57,6 +61,46 @@ export default function CaseBriefing({ caseData, schema, onClose, onOpenNotes }:
 
             <div className="mb-4 whitespace-pre-line font-mono text-xs leading-relaxed text-green-400/75">
               {caseData.briefing}
+            </div>
+
+            <div className="mb-5 border-t border-green-900/25 pt-4">
+              <div className="mb-2 flex items-center gap-2">
+                <span className={`neon-badge ${modeGuide.badgeClass}`}>{modeGuide.label}</span>
+              </div>
+              <p className="mb-3 font-mono text-[11px] leading-relaxed text-green-500/70">
+                {modeGuide.summary}
+              </p>
+              <p className="mb-2 font-mono text-[10px] uppercase tracking-widest text-green-500/60">
+                What you can do
+              </p>
+              <ul className="mb-3 space-y-1.5">
+                {modeGuide.canDo.map((item) => (
+                  <li
+                    key={item}
+                    className="flex gap-2 font-mono text-[10px] leading-relaxed text-green-400/75"
+                  >
+                    <span className="shrink-0 text-green-500/50">▸</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+              {modeGuide.notes && modeGuide.notes.length > 0 && (
+                <>
+                  <p className="mb-2 font-mono text-[10px] uppercase tracking-widest text-green-500/60">
+                    Good to know
+                  </p>
+                  <ul className="space-y-1">
+                    {modeGuide.notes.map((item) => (
+                      <li
+                        key={item}
+                        className="font-mono text-[10px] leading-relaxed text-green-600/55"
+                      >
+                        — {item}
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              )}
             </div>
 
             {schema.length > 0 && (
