@@ -2,10 +2,8 @@
   <img src="assets/logo.png" alt="SQLeuth logo" width="300" />
 </p>
 
-<h1 align="center">SQLeuth</h1>
-
 <p align="center">
-  <strong>A gamified, local-first SQL learning platform styled as a gritty 1940s noir detective game.</strong>
+  <strong>A gamified, local-first SQL learning platform styled as a noir detective game.</strong>
 </p>
 
 <p align="center">
@@ -14,7 +12,7 @@
 
 <br />
 
-Solve *The Marlowe File* — a murder mystery at The Blue Dahlia nightclub — by writing SQL queries against a SQLite database of suspects, alibis, phone records, and evidence. An AI narrator (powered by local Ollama) delivers hard-boiled commentary on your findings.
+Solve _The Marlowe File_ — a murder mystery at The Blue Dahlia nightclub — by writing SQL queries against a SQLite database of suspects, alibis, phone records, and evidence. An AI narrator (powered by local Ollama) delivers hard-boiled commentary on your findings.
 
 ![Tech Stack](https://img.shields.io/badge/Next.js-App%20Router-black?logo=next.js)
 ![FastAPI](https://img.shields.io/badge/FastAPI-Python-009688?logo=fastapi)
@@ -132,14 +130,14 @@ SELECT s.name, i.transcript
 
 ## API Endpoints
 
-| Method | Path | Description |
-|--------|------|-------------|
-| POST | `/api/query` | Execute a safe SELECT query |
-| POST | `/api/narrate` | Generate noir narration from query results |
-| POST | `/api/translate` | Natural language → SQL |
-| GET | `/api/schema` | Database schema for case notes |
-| GET | `/api/case` | Case briefing and hints |
-| POST | `/api/solve` | Submit accusation |
+| Method | Path             | Description                                |
+| ------ | ---------------- | ------------------------------------------ |
+| POST   | `/api/query`     | Execute a safe SELECT query                |
+| POST   | `/api/narrate`   | Generate noir narration from query results |
+| POST   | `/api/translate` | Natural language → SQL                     |
+| GET    | `/api/schema`    | Database schema for case notes             |
+| GET    | `/api/case`      | Case briefing and hints                    |
+| POST   | `/api/solve`     | Submit accusation                          |
 
 ## Demo Mode (GitHub Pages)
 
